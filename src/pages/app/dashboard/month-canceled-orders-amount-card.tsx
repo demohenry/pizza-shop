@@ -5,6 +5,7 @@ import { SquareX } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { getMonthCanceledOrdersAmount } from "@/api/get-mouth-canceled-ordered-amouth";
+import { MetricCardSkeleton } from "./metric-card-skeleton";
 
 export function MonthCanceledOrdersAmountCard() {
   const { data: getMonthCanceledOrdersAmountFn } = useQuery({
@@ -22,7 +23,7 @@ export function MonthCanceledOrdersAmountCard() {
         <SquareX className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="space-y-1">
-        {getMonthCanceledOrdersAmountFn && (
+        {getMonthCanceledOrdersAmountFn ? (
           <>
             <span className="text-2xl font-bold tracking-tight">
               {getMonthCanceledOrdersAmountFn.amount.toLocaleString("pt-BR")}
@@ -45,6 +46,8 @@ export function MonthCanceledOrdersAmountCard() {
               )}
             </p>
           </>
+        ) : (
+          <MetricCardSkeleton />
         )}
       </CardContent>
     </Card>
