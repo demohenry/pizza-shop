@@ -1,6 +1,6 @@
 import { api } from "@/lib/axios";
 
-interface GetOrdersDetailsParams {
+export interface GetOrdersDetailsParams {
   orderId: string;
 }
 
